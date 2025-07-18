@@ -1,0 +1,90 @@
+
+  .center-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    font-weight: bold;
+
+    margin: 100px;
+    text-align: center;
+  }
+  .center-text span:nth-of-type(1),span:nth-of-type(2) {
+    color: #53f058;
+  }
+
+  .input-class {
+    background-color: #F4FFF7;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #333;
+  }
+  .input-class2 {
+    border-radius: 10px;
+    font-size: 16px;
+    color: #333;
+  }
+
+  .btn-pos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .btn-add{
+    border-radius: 15px;
+    background-color: #F1EAD6;
+    color: #333;
+    text-transform: none;
+    font-weight: bold;
+
+  }
+  .custom-toolbar {
+    background-color: #FFFCF4;
+  }
+  .custom-title {
+    font-weight: bold;
+    background-color: #FFFCF4;
+  }
+  ion-header.custom-toolbar {
+    --background: #FFFCF4;
+  }
+  
+  ion-toolbar.custom-toolbar {
+    --background: #FFFCF4;
+  }
+ 
+ 
+  .custom-file-upload input[type="file"] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    z-index: 999;
+  }
+  ion-select::part(icon) {
+    display: none;
+  }
+
+  .camera-icon {
+    font-size: 54px; 
+    color: #17DB4E; 
+    margin-bottom: 0.5rem;
+  }
+  .custom-file-upload {
+    background-color: #F4FFF7;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+
+  
+
+
+

@@ -1,0 +1,106 @@
+<ion-header>
+  <ion-toolbar color="medium">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title size="large">
+      <div class="ion-text-center">  
+       Menu des catégories
+      </div>
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-menu side="start" type="overlay" contentId="menuContent">
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-title>
+    <h6 class="center-text">Devenir un partenaire de <span>D</span>rop<span>S</span>ell ?</h6>
+    <ion-button class="eye" expand="block" fill="clear" class="btn-add" [routerLink]="['/addstore']">Créer Votre propre boutique</ion-button>         
+    <br>
+    <div class="ion-text-center">
+      <ion-icon name="list-circle-outline"></ion-icon>
+      Nos catégories
+    </div>
+    </ion-title>
+    <br>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-menu-toggle auto-hide="false">
+      <ng-container *ngFor="let categorie of categories; let j = index">
+        <ion-item (click)="getSousCategories(categorie.id)">
+          <ion-title style="background-color: #F4FFF7">
+            <div class="ion-text-center">
+              <ion-icon name="{{items[j]}}"></ion-icon>
+              {{categorie.name}}
+          </div>
+          </ion-title>
+          </ion-item>
+      </ng-container>
+    </ion-menu-toggle>
+  </ion-list>
+  <br><br>
+  <ion-grid>
+  <ion-row>
+  <ion-col size="3.5"></ion-col>
+  <ion-col>
+  <ion-label style="font-size: 20px;">
+    <ion-icon name="settings-outline"></ion-icon>
+    Réglages
+  </ion-label>
+  </ion-col>
+  </ion-row>
+  </ion-grid>
+ 
+  <ion-row>
+    <ion-button fill="clear" [routerLink]="['/favoris']">
+      <ion-icon name="star" class="pers-icon"></ion-icon>
+    </ion-button>
+    <ion-button fill="clear" [routerLink]="['/commandes']">
+      <ion-icon name="cart" class="pers-icon"></ion-icon>
+    </ion-button>
+    <ion-button fill="clear" [routerLink]="['/profil']">
+      <ion-icon name="person" class="pers-icon"></ion-icon>
+    </ion-button>
+    <ion-button fill="clear" [routerLink]="['/contact']">
+      <ion-icon name="mail" class="pers-icon"></ion-icon>
+    </ion-button>
+    <ion-button fill="clear" [routerLink]="['/params']">
+      <ion-icon name="cog" class="pers-icon"></ion-icon>
+    </ion-button>
+  </ion-row>
+  <ion-row>
+    <ion-label style="font-size: 10px; margin-right: 8px; margin-left: 8px;">
+      FAVORIS
+    </ion-label>
+   <ion-label style="font-size: 10px; margin-right: 10px;">
+      COMMANDES
+    </ion-label>
+   <ion-label style="font-size: 10px; margin-right: 17px;">
+      PROFIL
+    </ion-label>
+   <ion-label style="font-size: 10px; margin-right: 16px;">
+      CONTACT
+    </ion-label>
+   <ion-label style="font-size: 10px;">
+      PARAMS
+    </ion-label>
+  </ion-row>
+</ion-content>
+</ion-menu>
+<ion-router-outlet id="menuContent">
+  
+  <br><br><br>
+  <ion-content>
+    <ion-list>
+  <ng-container *ngFor="let Souscategorie of Souscategories">
+      <ion-item expand="block" style="margin-bottom: 20px;" lines="full" (click)="getSousCategories(Souscategorie.id)">
+        <ion-button style="width: 100%;" size="default" color="light" >{{Souscategorie.name}}</ion-button>
+      </ion-item>
+    </ng-container>
+    </ion-list>
+  </ion-content>
+</ion-router-outlet>

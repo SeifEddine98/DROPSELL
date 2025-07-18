@@ -1,0 +1,110 @@
+<ion-header class="custom-toolbar">
+  <ion-toolbar class="custom-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title size="large" class="custom-title">           
+       Création d'une boutique
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <br>
+  <form #storeForm="ngForm" (ngSubmit)="onSubmit()">
+<ion-item lines="none">
+  <ion-label class="input-class2">Nom de la boutique*</ion-label>
+</ion-item>
+  <ion-item lines="none">
+    <ion-input class="input-class"  type="text" [(ngModel)]="store.name" name="name" required></ion-input>
+  </ion-item>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+  <ion-item lines="none">
+  <ion-label class="input-class2">Catégorie*</ion-label>
+</ion-item>
+  <ion-item lines="none" style="--background: #F4FFF7; border-radius: 10px; font-size: 16px; color: #333;">
+    <ion-select interface="action-sheet" cancel-text="Retour" name="Catégorie" [(ngModel)]="selectedCategorie" (ionChange)="onSelectCategorie()" required>
+      <ion-select-option *ngFor="let categorie of categories" [value]="categorie">{{categorie}}</ion-select-option>
+    </ion-select>
+    <ion-icon slot="end" name="chevron-down-outline" style="color: #17DB4E;"></ion-icon>
+  </ion-item>
+</ion-col>
+<ion-col size="6">
+   <ion-item lines="none">
+  <ion-label class="input-class2">Sous-catégorie</ion-label>
+</ion-item>
+  <ion-item lines="none" style="--background: #F4FFF7; border-radius: 10px; font-size: 16px; color: #333;">
+  <ion-select interface="action-sheet" cancel-text="Retour" [(ngModel)]="selectedSousCategorie" name="Sous-catégorie">
+    <ion-select-option *ngFor="let sousCategorie of sousCategoriesOptions"  [value]="sousCategorie">{{sousCategorie}}</ion-select-option>
+  </ion-select>
+  <ion-icon slot="end" name="chevron-down-outline" style="color: #17DB4E;"></ion-icon>
+</ion-item>
+</ion-col>
+</ion-row>
+</ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <ion-item lines="none">
+          <ion-label class="input-class2">Logo</ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <label class="custom-file-upload" style="display: flex; flex-direction: column; align-items: center;">
+            <ion-icon name="camera" class="camera-icon"></ion-icon>
+            <span style="margin-top: 5px; font-size: 12px;">{{selectedFileName ? selectedFileName : 'Ajouter un logo ou une photo de profil de votre boutique'}}</span>
+            <input type="file" (change)="onLogoSelected($event)" name="logo" id="logo">
+          </label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item lines="none">
+          <ion-label class="input-class2">Couverture</ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <label class="custom-file-upload" style="display: flex; flex-direction: column; align-items: center;">
+            <ion-icon name="camera" class="camera-icon"></ion-icon>
+            <span style="margin-top: 5px; font-size: 12px;">{{selectedFileName2 ? selectedFileName2 : 'Ajouter une couverture pour votre boutique'}}</span>
+            <input type="file" (change)="onCouvertureSelected($event)" name="couverture" id="couverture">
+          </label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+  <ion-item lines="none">
+    <ion-label class="input-class2">Description</ion-label>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-textarea class="input-class"  type="text" [autoGrow]="true" [(ngModel)]="store.description" placeholder="Décrire l'activité de votre boutique et/ou vos articles" style="text-align: center;" name="description"></ion-textarea>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-label class="input-class2">Numéro de téléphone*</ion-label>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-input class="input-class"  type="number" [(ngModel)]="store.numtel"
+    onKeyUp="if(this.value>99999999){this.value='';}else if(this.value<0){this.value='';}" name="numtel" required></ion-input>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-label class="input-class2">Gouvernerat*</ion-label>
+  </ion-item>
+   <ion-item lines="none" style="--background: #F4FFF7; border-radius: 10px; font-size: 16px; color: #333;">
+    <ion-select interface="action-sheet" cancel-text="Retour" [(ngModel)]="store.gouvernorat" name="gouvernorat" (ionChange)="onGouvernoratChange()" required>
+          <ion-select-option *ngFor="let gouvernorat of gouvernorats" [value]="gouvernorat">{{gouvernorat}}</ion-select-option>
+    </ion-select>
+    <ion-icon slot="end" name="chevron-down-outline" style="color: #17DB4E;"></ion-icon>
+    </ion-item>
+      <ion-item lines="none">
+    <ion-label class="input-class2">Délégation*</ion-label>
+  </ion-item>
+    <ion-item lines="none" style="--background: #F4FFF7; border-radius: 10px; font-size: 16px; color: #333;">
+      <ion-select interface="action-sheet" cancel-text="Retour" [(ngModel)]="store.delegation" name="delegation" required>
+        <ion-select-option *ngFor="let delegation of delegations" [value]="delegation">{{delegation}}</ion-select-option>
+      </ion-select>
+      <ion-icon slot="end" name="chevron-down-outline" style="color: #17DB4E;"></ion-icon>
+    </ion-item>
+  <div class="btn-pos">
+    <ion-button class="eye" type="submit" fill="clear" class="btn-add" [disabled]="!storeForm.form.valid" >Créer ma boutique</ion-button>
+  </div>
+</form>
+</ion-content>
